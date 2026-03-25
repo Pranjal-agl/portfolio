@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 
 const links = [
   { label: "GitHub", href: "https://github.com/Pranjal-agl", handle: "@Pranjal-agl" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/pranjal-agrawal", handle: "pranjal-agrawal" },
-  { label: "Email", href: "mailto:pranjal@example.com", handle: "pranjal@example.com" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/pranjal-agrawal-747b73366/", handle: "pranjal-agrawal" },
+  { label: "Email", href: "mailto:pranjalagrawal.device@gmail.com", handle: "pranjalagrawal.device@gmail.com" },
 ];
 
 export default function Contact() {
