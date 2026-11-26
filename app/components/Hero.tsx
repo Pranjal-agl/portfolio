@@ -1,13 +1,15 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 const lines = [
   { text: "$ whoami", delay: 0 },
   { text: "pranjal_agrawal", delay: 600, accent: true },
   { text: "$ cat interests.txt", delay: 1200 },
-  { text: "systems • cryptography • ML • quantum", delay: 1800, muted: true },
-  { text: "$ status", delay: 2400 },
-  { text: "open to internships ✦", delay: 3000, accent: true },
+  { text: "distributed systems • LLM agents • ML • security", delay: 1800, muted: true },
+  { text: "$ cat now.txt", delay: 2400 },
+  { text: "interning @ amazon", delay: 3000, muted: true },
+  { text: "$ status", delay: 3600 },
+  { text: "open to full-time roles ✦", delay: 4200, accent: true },
 ];
 
 export default function Hero() {
@@ -61,7 +63,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <p className="mono text-xs mb-4" style={{ color: "var(--accent)", animation: "slideInLeft 0.6s ease 0.1s both" }}>
-              HE/HIM · CSE · 3RD YEAR
+              HE/HIM · CSE · 4TH YEAR · BITS PILANI
             </p>
             <h1
               className="font-extrabold leading-none mb-6"
@@ -75,7 +77,7 @@ export default function Hero() {
               style={{ color: "var(--text-muted)", maxWidth: 420, animation: "slideInLeft 0.7s ease 0.35s both" }}
             >
               I build things at the intersection of systems, security, and intelligence.
-              From encrypted filesystems to RL agents — I like problems that bite back.
+              From Raft-replicated stores to LLM agents with real evals — I like problems that bite back.
             </p>
             <div className="flex items-center gap-4 flex-wrap" style={{ animation: "slideInLeft 0.7s ease 0.5s both" }}>
               <a
