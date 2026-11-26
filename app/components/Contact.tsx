@@ -46,7 +46,7 @@ export default function Contact() {
               If you have an interesting problem or just want to connect — reach out.
             </p>
             <a
-              href="mailto:pranjal@example.com"
+              href="mailto:pranjalagrawal.device@gmail.com"
               className="mono text-sm px-6 py-3 font-bold inline-block transition-all duration-200"
               style={{ background: "var(--accent)", color: "var(--bg)", borderRadius: 2 }}
               onMouseEnter={e => { e.currentTarget.style.opacity = "0.85"; }}
@@ -92,7 +92,7 @@ export default function Contact() {
         </div>
 
         <div className="mt-24 pt-8 flex items-center justify-between" style={{ borderTop: "1px solid var(--border)" }}>
-          <span className="mono text-xs" style={{ color: "var(--text-muted)" }}>© 2025 Pranjal Agrawal</span>
+          <span className="mono text-xs" style={{ color: "var(--text-muted)" }}>© {new Date().getFullYear()} Pranjal Agrawal</span>
           <span className="mono text-xs" style={{ color: "var(--text-muted)" }}>built with Next.js + Tailwind</span>
         </div>
       </div>

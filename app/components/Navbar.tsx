@@ -25,7 +25,7 @@ export default function Navbar() {
         <a href="#" className="mono text-sm font-bold" style={{ color: "var(--accent)" }}>
           PA<span style={{ color: "var(--text-muted)" }}>_</span>
         </a>
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-4 sm:gap-8">
           {links.map((l) => (
             <a
               key={l}

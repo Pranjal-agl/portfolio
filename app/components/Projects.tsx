@@ -3,35 +3,61 @@ import { useEffect, useRef, useState } from "react";
 
 const projects = [
   {
-    id: "01", name: "traffic-rl-ppo", tag: "Reinforcement Learning", lang: "Python", langColor: "#3572A5",
-    desc: "PPO agent controlling traffic signals in a custom Gymnasium environment. Reduces average vehicle queue length by 83.4% over fixed-timer baseline across 20 evaluation episodes.",
-    highlights: ["PPO · Stable-Baselines3", "Custom Gym Env", "83.4% improvement"],
-    link: "https://github.com/Pranjal-agl/traffic-rl-ppo",
+    id: "01", name: "kvengine", tag: "Distributed Systems", lang: "Go", langColor: "#00ADD8",
+    desc: "Crash-safe, Raft-replicated key-value store built from scratch in Go: fsynced write-ahead log, binary-safe TCP protocol, leader election, log compaction and an LSM storage engine. Correctness is backed by a linearizability checker, SIGKILL crash tests and fuzzing.",
+    highlights: ["Raft · LSM · WAL", "Linearizability checker", "Crash-fault tests"],
+    link: "https://github.com/Pranjal-agl/kvengine",
   },
   {
-    id: "02", name: "encfs-cloudcli", tag: "Systems · Cryptography", lang: "C++", langColor: "#f34b7d",
+    id: "02", name: "claims-triage-agent", tag: "LLM Agents · Data", lang: "Python", langColor: "#3572A5",
+    desc: "Insurance-claims system in two stages: a LangGraph agent that extracts, grounds, fraud-scores and routes free-text claims, plus a text-to-SQL + RAG analytics assistant where Postgres row-level security decides what each user can see. Measured on a 231-case eval and a 76-question gold set.",
+    highlights: ["LangGraph", "Postgres RLS · pgvector", "26/26 RBAC attacks contained"],
+    link: "https://github.com/Pranjal-agl/claims-triage-agent",
+  },
+  {
+    id: "03", name: "collabdesk", tag: "Full-Stack · Real-time", lang: "Java", langColor: "#b07219",
+    desc: "Multi-tenant project management app with live collaboration. Spring Boot 3 backend with STOMP over WebSocket, rotating JWT refresh tokens and tenant-scoped caching; React + TypeScript frontend with optimistic updates that roll back on conflict.",
+    highlights: ["Spring Boot 3", "React · TypeScript", "WebSocket"],
+    link: "https://github.com/Pranjal-agl/collabdesk",
+  },
+  {
+    id: "04", name: "forex-rate-archiver", tag: "Data Engineering", lang: "Python", langColor: "#3572A5",
+    desc: "Daily ETL pipeline archiving USD→INR rates from SBI New York, HDFC and ICICI, none of which offer a history API. Per-bank adapters (Selenium, PDF table extraction, BeautifulSoup) feed SQLite via idempotent upserts, with anomaly detection evaluated on injected faults. Runs on GitHub Actions.",
+    highlights: ["ETL · SQLite", "Anomaly detection", "GitHub Actions"],
+    link: "https://github.com/Pranjal-agl/forex-rate-archiver",
+  },
+  {
+    id: "05", name: "cuad-extractor", tag: "NLP · Fine-tuning", lang: "Python", langColor: "#3572A5",
+    desc: "Fine-tuned DeBERTa-v3 for extracting clauses (governing law, non-compete, liability caps…) from legal contracts. Hyperparameter search tracked in MLflow, FastAPI serving with a measured p99 latency, and an adversarial eval that shows where the model breaks.",
+    highlights: ["DeBERTa-v3", "0.77 test macro-F1", "p99 29 ms"],
+    link: "https://github.com/Pranjal-agl/cuad-extractor",
+  },
+  {
+    id: "06", name: "encfs-cloudcli", tag: "Systems · Cryptography", lang: "C++", langColor: "#f34b7d",
     desc: "Encrypted FUSE filesystem in C++17. Files written to the mount point are transparently encrypted with AES-256-GCM and uploaded to cloud storage. HMAC-SHA256 filename hashing for privacy.",
     highlights: ["AES-256-GCM", "FUSE · C++17", "HMAC-SHA256"],
     link: "https://github.com/Pranjal-agl/encfs-cloudcli",
   },
   {
-    id: "03", name: "quantum-traffic-routing", tag: "Quantum Computing", lang: "Python", langColor: "#3572A5",
-    desc: "Traffic optimization using Quantum Computing — Travelling Salesman NP Complete. Quantum routing prototype using QAOA and Qiskit to solve a small CVRP/TSP via qubit-encoded phase estimation.",
-    highlights: ["QAOA · Qiskit", "CVRP/TSP", "Qubit encoding"],
-    link: "https://github.com/Pranjal-agl/quantum-traffic-routing",
+    id: "07", name: "news-digest", tag: "Automation · NLP", lang: "Python", langColor: "#3572A5",
+    desc: "Self-hosted, Ground News-style daily digest. Pulls ~20 RSS feeds across the political spectrum, clusters coverage into stories with TF-IDF, and shows each story's bias split, blindspots and ownership. Publishes a static site to GitHub Pages every day.",
+    highlights: ["TF-IDF clustering", "GitHub Pages", "No API keys"],
+    link: "https://github.com/Pranjal-agl/news-digest",
   },
   {
-    id: "04", name: "SBI_Rate_Archiver", tag: "Automation · Data", lang: "Python", langColor: "#3572A5",
-    desc: "Automated USD→INR exchange rate archiver — scrapes SBI New York, HDFC & ICICI daily via Selenium, PDF parsing & BeautifulSoup. Stores historical data in Excel + CSV. Runs on GitHub Actions.",
-    highlights: ["Selenium", "GitHub Actions", "PDF parsing"],
-    link: "https://github.com/Pranjal-agl/SBI_Rate_Archiver",
+    id: "08", name: "traffic-rl-ppo", tag: "Reinforcement Learning", lang: "Python", langColor: "#3572A5",
+    desc: "PPO agent controlling traffic signals in a custom Gymnasium environment. Reduces average vehicle queue length by 83.4% over fixed-timer baseline across 20 evaluation episodes.",
+    highlights: ["PPO · Stable-Baselines3", "Custom Gym Env", "83.4% improvement"],
+    link: "https://github.com/Pranjal-agl/traffic-rl-ppo",
   },
-  {
-    id: "05", name: "2D_FloorPlanner", tag: "Desktop Application", lang: "Java", langColor: "#b07219",
-    desc: "Java Swing desktop application for designing 2D floor plans — add rooms, place doors & windows, drop in furniture, and save/load layouts. Full GUI with drag-and-drop support.",
-    highlights: ["Java Swing", "Drag & Drop", "Save/Load"],
-    link: "https://github.com/Pranjal-agl/2D_FloorPlanner",
-  },
+];
+
+const moreWork = [
+  { name: "octamind-graph-rag", note: "query-aware graph retrieval for multi-hop QA (research)" },
+  { name: "qrl-td-lambda", note: "quantum RL paper replication + TD(λ) traces" },
+  { name: "quantum-traffic-routing", note: "QAOA routing with Qiskit" },
+  { name: "financial_inc", note: "alt-data credit risk scoring" },
+  { name: "2D_FloorPlanner", note: "Java Swing floor-plan editor" },
 ];
 
 function useInViewAnchor(threshold = 0.15) {
@@ -115,17 +141,17 @@ function ProjectCard({ p, i }: { p: typeof projects[0]; i: number }) {
 }
 
 export default function Projects() {
-  const header = useInViewDiv(0.1);
+  const { ref: headerRef, inView: headerInView } = useInViewDiv(0.1);
 
   return (
     <section id="projects" style={{ padding: "9rem 1.5rem" }}>
       <div className="max-w-6xl mx-auto">
         <div
-          ref={header.ref}
+          ref={headerRef}
           style={{
             marginBottom: "4rem",
-            opacity: header.inView ? 1 : 0,
-            transform: header.inView ? "translateY(0)" : "translateY(32px)",
+            opacity: headerInView ? 1 : 0,
+            transform: headerInView ? "translateY(0)" : "translateY(32px)",
             transition: "opacity 0.7s ease, transform 0.7s ease",
           }}
         >
@@ -140,6 +166,35 @@ export default function Projects() {
           {projects.map((p, i) => (
             <ProjectCard key={p.id} p={p} i={i} />
           ))}
+        </div>
+
+        <div className="mt-12">
+          <p className="mono text-xs mb-4" style={{ color: "var(--text-muted)" }}>MORE WORK</p>
+          <div className="flex flex-wrap gap-3">
+            {moreWork.map(m => (
+              <a
+                key={m.name}
+                href={`https://github.com/Pranjal-agl/${m.name}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mono text-xs px-3 py-2 rounded-sm transition-colors duration-200"
+                style={{ border: "1px solid var(--border)", background: "var(--bg-2)", color: "var(--text)", textDecoration: "none" }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--accent)"; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--border)"; }}
+              >
+                {m.name} <span style={{ color: "var(--text-muted)" }}>· {m.note}</span>
+              </a>
+            ))}
+            <a
+              href="https://github.com/Pranjal-agl?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mono text-xs px-3 py-2"
+              style={{ color: "var(--accent)", textDecoration: "none" }}
+            >
+              all repos ↗
+            </a>
+          </div>
         </div>
       </div>
     </section>

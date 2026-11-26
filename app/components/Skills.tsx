@@ -2,12 +2,12 @@
 import { useEffect, useRef, useState } from "react";
 
 const skills = [
-  { category: "Languages", items: ["C++", "Python", "Java", "C", "SQL"] },
-  { category: "ML / RL", items: ["PyTorch", "Stable-Baselines3", "Gymnasium", "NumPy", "Pandas", "Scikit-learn"] },
-  { category: "Systems", items: ["FUSE", "OpenSSL", "AES-256-GCM", "HMAC-SHA256", "Linux", "Git"] },
-  { category: "Quantum", items: ["Qiskit", "QAOA", "Quantum Circuits", "VQE"] },
-  { category: "Tools & Cloud", items: ["GitHub Actions", "Selenium", "BeautifulSoup", "Pygame", "Matplotlib"] },
-  { category: "Coursework", items: ["Machine Learning", "Cryptography", "Blockchain", "Quantum Computing", "Cloud Computing", "Reinforcement Learning", "OS", "Algorithms", "DBMS"] },
+  { category: "Languages", items: ["Python", "Go", "C++", "Java", "TypeScript", "C", "SQL"] },
+  { category: "ML / AI", items: ["PyTorch", "Hugging Face Transformers", "LangGraph", "RAG", "MLflow", "Stable-Baselines3", "Scikit-learn", "Pandas"] },
+  { category: "Systems", items: ["Raft", "LSM trees", "Write-ahead logs", "FUSE", "OpenSSL", "AES-256-GCM", "Linux"] },
+  { category: "Backend & Data", items: ["Spring Boot", "FastAPI", "React", "PostgreSQL", "pgvector", "SQLite", "WebSocket"] },
+  { category: "Tools & Quantum", items: ["Docker", "GitHub Actions", "Git", "Selenium", "Qiskit", "QAOA"] },
+  { category: "Coursework", items: ["Machine Learning", "Deep Learning", "Artificial Intelligence", "Reinforcement Learning", "Cryptography", "Blockchain", "Quantum Computing", "Cloud Computing", "OS", "Algorithms", "DBMS"] },
 ];
 
 export default function Skills() {
