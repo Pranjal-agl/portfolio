@@ -42,7 +42,7 @@ export default function Contact() {
             transition: "opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s",
           }}>
             <p className="text-lg leading-relaxed mb-8" style={{ color: "var(--text-muted)" }}>
-              I&apos;m currently looking for internship opportunities in SWE, ML, or security.
+              I&apos;m currently interning at Amazon and looking for full-time roles in SWE, ML, or security.
               If you have an interesting problem or just want to connect — reach out.
             </p>
             <a

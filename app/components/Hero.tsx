@@ -6,8 +6,10 @@ const lines = [
   { text: "pranjal_agrawal", delay: 600, accent: true },
   { text: "$ cat interests.txt", delay: 1200 },
   { text: "distributed systems • LLM agents • ML • security", delay: 1800, muted: true },
-  { text: "$ status", delay: 2400 },
-  { text: "open to internships ✦", delay: 3000, accent: true },
+  { text: "$ cat now.txt", delay: 2400 },
+  { text: "interning @ amazon", delay: 3000, muted: true },
+  { text: "$ status", delay: 3600 },
+  { text: "open to full-time roles ✦", delay: 4200, accent: true },
 ];
 
 export default function Hero() {
